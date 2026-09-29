@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-serif: "Fraunces", Georgia, serif;
+    --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+}
+
+.font-serif,
+.font-display {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.font-sans {
+  font-family: var(--font-sans), sans-serif;
+}
+
+.font-mono,
+.font-mono-tabular {
+  font-family: var(--font-mono), monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F6F3EC;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9D2C5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B07A3A;
+}
+
+html.dark body {
+  background-color: #171A20;
+  color: #F6F3EC;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #171A20;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #2D323C;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #B07A3A;
+}
+
+/* Smooth reveal utility */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
